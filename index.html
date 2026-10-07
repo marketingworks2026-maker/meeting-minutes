@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>سامانه مدیریت صورتجلسات</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       LOGIN
+  ====================================================== -->
+
+  <section
+    id="loginPage"
+    class="login-page"
+  >
+
+    <div class="login-card">
+
+
+      <div class="login-logo">
+        M
+      </div>
+
+
+      <h1>
+        سامانه مدیریت صورتجلسات
+      </h1>
+
+
+      <p>
+        برای ورود به سامانه، اطلاعات حساب خود را وارد کنید.
+      </p>
+
+
+      <form
+        id="loginForm"
+        class="login-form"
+      >
+
+
+        <div class="field">
+
+          <label for="loginEmail">
+            ایمیل
+          </label>
+
+          <input
+            id="loginEmail"
+            type="email"
+            autocomplete="email"
+            placeholder="example@email.com"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="loginPassword">
+            رمز عبور
+          </label>
+
+          <input
+            id="loginPassword"
+            type="password"
+            autocomplete="current-password"
+            placeholder="رمز عبور"
+            required
+          >
+
+        </div>
+
+
+        <button
+          id="loginBtn"
+          class="primary-btn login-btn"
+          type="submit"
+        >
+          ورود
+        </button>
+
+
+        <div
+          id="loginMessage"
+          class="login-message"
+        ></div>
+
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       APPLICATION
+  ====================================================== -->
+
+  <main
+    id="appShell"
+    class="app-container hidden"
+  >
+
+
+    <!-- Header -->
+
+    <header class="app-header">
+
+      <div>
+
+        <h1>
+          مدیریت صورتجلسات
+        </h1>
+
+        <p>
+          ثبت، امضا، آرشیو و پیگیری تعهدات جلسات
+        </p>
+
+      </div>
+
+
+      <div class="header-user">
+
+        <div class="user-info">
+
+          <span>
+            وارد شده با:
+          </span>
+
+          <strong id="currentUserEmail">
+            -
+          </strong>
+
+        </div>
+
+
+        <button
+          id="logoutBtn"
+          class="logout-btn"
+          type="button"
+        >
+          خروج
+        </button>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- Tabs -->
+
+    <nav class="main-tabs">
+
+      <button
+        id="formTabBtn"
+        class="tab-btn active"
+        type="button"
+      >
+        ثبت صورتجلسه
+      </button>
+
+
+      <button
+        id="archiveTabBtn"
+        class="tab-btn"
+        type="button"
+      >
+        آرشیو صورتجلسات
+      </button>
+
+
+      <button
+        id="tasksTabBtn"
+        class="tab-btn"
+        type="button"
+      >
+        داشبورد تعهدات
+      </button>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         FORM PAGE
+    ====================================================== -->
+
+    <section
+      id="formPage"
+      class="page-section active"
+    >
+
+
+      <section class="card">
+
+        <div class="card-header">
+
+          <div>
+
+            <h2>
+              اطلاعات جلسه
+            </h2>
+
+            <p>
+              اطلاعات اصلی صورتجلسه را وارد کنید.
+            </p>
+
+          </div>
+
+
+          <span class="status-badge">
+            پیش‌نویس
+          </span>
+
+        </div>
+
+
+        <div class="grid-2">
+
+
+          <div class="field">
+
+            <label for="meetingNumber">
+              شماره صورتجلسه
+            </label>
+
+            <input
+              id="meetingNumber"
+              type="text"
+              placeholder="مثلاً 1405-001"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="meetingDate">
+              تاریخ جلسه
+            </label>
+
+            <input
+              id="meetingDate"
+              type="date"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="grid-2">
+
+
+          <div class="field">
+
+            <label for="meetingTime">
+              ساعت جلسه
+            </label>
+
+            <input
+              id="meetingTime"
+              type="time"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="meetingLocation">
+              محل / بستر جلسه
+            </label>
+
+            <input
+              id="meetingLocation"
+              type="text"
+              placeholder="مثلاً دفتر مرکزی یا جلسه آنلاین"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="meetingTitle">
+            موضوع جلسه
+          </label>
+
+          <input
+            id="meetingTitle"
+            type="text"
+            placeholder="موضوع جلسه را وارد کنید"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="meetingDescription">
+            شرح جلسه
+          </label>
+
+          <textarea
+            id="meetingDescription"
+            rows="5"
+            placeholder="شرح جلسه، نکات مطرح‌شده و تصمیم‌های اصلی"
+          ></textarea>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- Participants -->
+
+      <section class="card">
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              حاضرین جلسه
+            </h2>
+
+            <p>
+              افرادی که در جلسه حضور دارند را وارد کنید.
+            </p>
+
+          </div>
+
+
+          <button
+            id="addParticipantBtn"
+            class="secondary-btn"
+            type="button"
+          >
+            + افزودن حاضر
+          </button>
+
+        </div>
+
+
+        <div
+          id="participantsContainer"
+          class="dynamic-container"
+        ></div>
+
+      </section>
+
+
+
+      <!-- Actions -->
+
+      <section class="card">
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              مصوبات و تعهدات
+            </h2>
+
+            <p>
+              مسئول، مهلت و وضعیت هر تعهد را مشخص کنید.
+            </p>
+
+          </div>
+
+
+          <button
+            id="addActionBtn"
+            class="secondary-btn"
+            type="button"
+          >
+            + افزودن تعهد
+          </button>
+
+        </div>
+
+
+        <div
+          id="actionsContainer"
+          class="dynamic-container"
+        ></div>
+
+      </section>
+
+
+
+      <!-- Signatures -->
+
+      <section class="card">
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              تأیید و امضای حاضرین
+            </h2>
+
+            <p>
+              امضا با موس، قلم یا لمس صفحه قابل ثبت است.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="signaturesContainer"
+          class="signatures-grid"
+        ></div>
+
+      </section>
+
+
+
+      <!-- Submit -->
+
+      <section class="submit-card">
+
+        <div>
+
+          <strong>
+            ثبت صورتجلسه
+          </strong>
+
+          <p>
+            اطلاعات، تعهدات و امضاها در دیتابیس ذخیره خواهند شد.
+          </p>
+
+        </div>
+
+
+        <button
+          id="saveBtn"
+          class="primary-btn"
+          type="button"
+        >
+          ثبت صورتجلسه
+        </button>
+
+      </section>
+
+
+      <div
+        id="message"
+        class="message"
+      ></div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ARCHIVE PAGE
+    ====================================================== -->
+
+    <section
+      id="archivePage"
+      class="page-section"
+    >
+
+
+      <section class="summary-grid">
+
+
+        <div class="summary-card">
+
+          <span>
+            کل صورتجلسات
+          </span>
+
+          <strong id="totalMeetings">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <span>
+            تأیید شده
+          </span>
+
+          <strong id="approvedMeetings">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <span>
+            در انتظار تکمیل
+          </span>
+
+          <strong id="pendingMeetings">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <span>
+            کل تعهدات
+          </span>
+
+          <strong id="totalActions">
+            -
+          </strong>
+
+        </div>
+
+
+      </section>
+
+
+
+      <section class="archive-filter-card">
+
+
+        <div class="field">
+
+          <label for="searchInput">
+            جستجو
+          </label>
+
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="شماره یا موضوع صورتجلسه"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="statusFilter">
+            وضعیت
+          </label>
+
+          <select id="statusFilter">
+
+            <option value="all">
+              همه
+            </option>
+
+            <option value="draft">
+              پیش‌نویس
+            </option>
+
+            <option value="waiting_for_signature">
+              در انتظار امضا
+            </option>
+
+            <option value="approved">
+              تأیید شده
+            </option>
+
+            <option value="locked">
+              نهایی
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          id="refreshArchiveBtn"
+          class="secondary-btn archive-refresh-btn"
+          type="button"
+        >
+          بروزرسانی
+        </button>
+
+
+      </section>
+
+
+      <div
+        id="archiveLoading"
+        class="state-box"
+      >
+        در حال دریافت اطلاعات...
+      </div>
+
+
+      <div
+        id="archiveError"
+        class="state-box error-box"
+      ></div>
+
+
+      <div
+        id="archiveEmpty"
+        class="state-box"
+      >
+        هنوز صورتجلسه‌ای ثبت نشده است.
+      </div>
+
+
+      <div
+        id="meetingsContainer"
+        class="meetings-list"
+      ></div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         TASKS DASHBOARD
+    ====================================================== -->
+
+    <section
+      id="tasksPage"
+      class="page-section"
+    >
+
+      <section class="summary-grid tasks-summary-grid">
+
+        <div class="summary-card">
+          <span>کل تعهدات</span>
+          <strong id="tasksTotal">-</strong>
+        </div>
+
+        <div class="summary-card">
+          <span>انجام شده</span>
+          <strong id="tasksCompleted">-</strong>
+        </div>
+
+        <div class="summary-card">
+          <span>در حال انجام</span>
+          <strong id="tasksInProgress">-</strong>
+        </div>
+
+        <div class="summary-card">
+          <span>عقب‌افتاده</span>
+          <strong id="tasksOverdue">-</strong>
+        </div>
+
+      </section>
+
+      <section class="archive-filter-card tasks-filter-card">
+
+        <div class="field">
+          <label for="taskSearchInput">جستجوی فرد</label>
+          <input
+            id="taskSearchInput"
+            type="text"
+            placeholder="نام، ایمیل یا شماره تماس"
+          >
+        </div>
+
+        <div class="field">
+          <label for="taskStatusFilter">وضعیت تعهد</label>
+          <select id="taskStatusFilter">
+            <option value="all">همه</option>
+            <option value="pending">انجام نشده</option>
+            <option value="in_progress">در حال انجام</option>
+            <option value="completed">انجام شده</option>
+            <option value="overdue">عقب‌افتاده</option>
+            <option value="cancelled">لغو شده</option>
+          </select>
+        </div>
+
+        <button
+          id="refreshTasksBtn"
+          class="secondary-btn archive-refresh-btn"
+          type="button"
+        >
+          بروزرسانی
+        </button>
+
+      </section>
+
+      <div id="tasksLoading" class="state-box">
+        در حال دریافت تعهدات...
+      </div>
+
+      <div id="tasksError" class="state-box error-box"></div>
+
+      <div id="tasksEmpty" class="state-box">
+        تعهدی برای نمایش وجود ندارد.
+      </div>
+
+      <div
+        id="tasksPeopleContainer"
+        class="tasks-people-list"
+      ></div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       DETAIL MODAL
+  ====================================================== -->
+
+  <div
+    id="detailModal"
+    class="modal-overlay"
+  >
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="modal-subtitle">
+            جزئیات صورتجلسه
+          </span>
+
+          <h2 id="detailTitle">
+            -
+          </h2>
+
+        </div>
+
+
+        <button
+          id="closeDetailBtn"
+          class="modal-close"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div
+        id="detailContent"
+        class="modal-content"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
+
